@@ -12,6 +12,15 @@ export const contado = (req: Request, res: Response) => {
         }
     });
 
+    //Passo 2: Configurar a mensagem
+    let message = {
+        from: 'Lucas <lucasisaac1306@hotmail.com.br>',
+        to: 'teste@hotmail.com',
+        subject: 'Contato do site',
+        html: 'Opa <strong>teste</strong>, como vai ?',
+        text: 'Opa teste, como vai ?'
+    }
+
 
     res.json({ pong: true });
 }

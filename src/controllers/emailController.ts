@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import nodemailer from 'nodemailer';
 
-export const contado = (req: Request, res: Response) => {
+export const contado = async (req: Request, res: Response) => {
     //Passo 1: Criar/configurar o transportador
     var transport = nodemailer.createTransport({
         host: "sandbox.smtp.mailtrap.io",
@@ -21,6 +21,9 @@ export const contado = (req: Request, res: Response) => {
         text: 'Opa teste, como vai ?'
     }
 
+    //Passo 3: Enviar a mensagem
+    let info = await transport.sendMail(message);
 
-    res.json({ pong: true });
+    console.log('info', info);
+    res.json({ success: true });
 }
